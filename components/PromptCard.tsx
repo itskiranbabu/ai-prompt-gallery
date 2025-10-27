@@ -134,4 +134,12 @@ export default function PromptCard({
 
         {/* Copy Prompt Button */}
         <div className="pt-2">
-          <CopyButton text={prompt_text}
+          <CopyButton text={prompt_text} label="Copy Prompt" />
+        </div>
+
+        {/* Time */}
+        <p className="text-xs text-gray-400 uppercase tracking-wide">{getTimeAgo(created_at)}</p>
+      </div>
+    </div>
+  )
+}
