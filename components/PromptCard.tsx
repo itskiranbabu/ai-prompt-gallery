@@ -2,8 +2,9 @@
 
 import Image from 'next/image'
 import Link from 'next/link'
-import { Heart } from 'lucide-react'
+import { Heart, Bookmark, MessageCircle, Send } from 'lucide-react'
 import CopyButton from './CopyButton'
+import { useState } from 'react'
 
 interface PromptCardProps {
   id: string
@@ -28,6 +29,9 @@ export default function PromptCard({
   likes_count,
   created_at
 }: PromptCardProps) {
+  const [liked, setLiked] = useState(false)
+  const [saved, setSaved] = useState(false)
+
   const getTimeAgo = (dateString: string) => {
     const date = new Date(dateString)
     const now = new Date()
@@ -36,54 +40,105 @@ export default function PromptCard({
     
     if (diffInDays === 0) return 'Today'
     if (diffInDays === 1) return '1 day ago'
-    return `${diffInDays} days ago`
+    if (diffInDays < 7) return `${diffInDays} days ago`
+    if (diffInDays < 30) return `${Math.floor(diffInDays / 7)} weeks ago`
+    return `${Math.floor(diffInDays / 30)} months ago`
   }
 
   return (
-    <div className="bg-white rounded-xl shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden group">
+    <div className="bg-white rounded-2xl shadow-lg overflow-hidden card-hover border border-gray-100">
+      {/* Header - Instagram Style */}
+      <div className="p-4 flex items-center justify-between border-b border-gray-100">
+        <div className="flex items-center gap-3">
+          <div className="w-10 h-10 rounded-full instagram-gradient flex items-center justify-center">
+            <div className="w-9 h-9 rounded-full bg-white flex items-center justify-center">
+              <span className="text-sm font-bold instagram-gradient-text">
+                {creator_username?.charAt(1).toUpperCase() || 'A'}
+              </span>
+            </div>
+          </div>
+          <div>
+            <Link href={`/prompts/${id}`}>
+              <p className="font-semibold text-sm hover:text-gray-600 transition-colors">
+                {creator_username || '@creator'}
+              </p>
+            </Link>
+            <p className="text-xs text-gray-500">{category}</p>
+          </div>
+        </div>
+        <button className="text-gray-600 hover:text-gray-900">
+          <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+            <circle cx="10" cy="4" r="1.5"/>
+            <circle cx="10" cy="10" r="1.5"/>
+            <circle cx="10" cy="16" r="1.5"/>
+          </svg>
+        </button>
+      </div>
+
+      {/* Image */}
       <Link href={`/prompts/${id}`}>
-        <div className="relative aspect-square overflow-hidden bg-gray-100">
+        <div className="relative aspect-square overflow-hidden bg-gradient-to-br from-purple-100 to-pink-100">
           <Image
             src={image_url || '/placeholder.jpg'}
             alt={title}
             fill
-            className="object-cover group-hover:scale-105 transition-transform duration-300"
+            className="object-cover hover:scale-105 transition-transform duration-500"
           />
-          <div className="absolute top-3 right-3">
-            <div className="bg-white/90 backdrop-blur-sm px-3 py-1.5 rounded-full flex items-center gap-1.5 text-sm font-medium">
-              <Heart className="w-4 h-4 text-red-500 fill-red-500" />
-              {likes_count}
-            </div>
-          </div>
         </div>
       </Link>
-      
-      <div className="p-5">
-        <Link href={`/prompts/${id}`}>
-          <h3 className="font-bold text-lg text-gray-900 mb-2 hover:text-primary-600 transition-colors line-clamp-1">
-            {title}
-          </h3>
-        </Link>
-        
-        <p className="text-gray-600 text-sm mb-4 line-clamp-2">
-          {description}
-        </p>
-        
-        <div className="flex items-center justify-between mb-4">
-          <span className="text-xs bg-primary-100 text-primary-700 px-3 py-1 rounded-full font-medium">
-            {category}
-          </span>
-          {creator_username && (
-            <span className="text-xs text-gray-500">
-              by {creator_username}
-            </span>
-          )}
+
+      {/* Actions - Instagram Style */}
+      <div className="p-4 space-y-3">
+        <div className="flex items-center justify-between">
+          <div className="flex items-center gap-4">
+            <button
+              onClick={() => setLiked(!liked)}
+              className="transition-transform hover:scale-110 active:scale-95"
+            >
+              <Heart
+                className={`w-7 h-7 ${liked ? 'fill-red-500 text-red-500' : 'text-gray-800'}`}
+              />
+            </button>
+            <button className="transition-transform hover:scale-110 active:scale-95">
+              <MessageCircle className="w-7 h-7 text-gray-800" />
+            </button>
+            <button className="transition-transform hover:scale-110 active:scale-95">
+              <Send className="w-7 h-7 text-gray-800" />
+            </button>
+          </div>
+          <button
+            onClick={() => setSaved(!saved)}
+            className="transition-transform hover:scale-110 active:scale-95"
+          >
+            <Bookmark
+              className={`w-6 h-6 ${saved ? 'fill-gray-800 text-gray-800' : 'text-gray-800'}`}
+            />
+          </button>
         </div>
-        
-        <div className="flex items-center justify-between pt-4 border-t border-gray-100">
-          <span className="text-xs text-gray-500">{getTimeAgo(created_at)}</span>
+
+        {/* Likes */}
+        <p className="font-semibold text-sm">
+          {(likes_count + (liked ? 1 : 0)).toLocaleString()} likes
+        </p>
+
+        {/* Caption */}
+        <div className="space-y-1">
+          <Link href={`/prompts/${id}`}>
+            <p className="text-sm">
+              <span className="font-semibold mr-2">{creator_username || '@creator'}</span>
+              <span className="text-gray-800">{title}</span>
+            </p>
+          </Link>
+          <p className="text-sm text-gray-500 line-clamp-2">{description}</p>
+        </div>
+
+        {/* Copy Prompt Button */}
+        <div className="pt-2">
           <CopyButton text={prompt_text} label="Copy Prompt" />
         </div>
+
+        {/* Time */}
+        <p className="text-xs text-gray-400 uppercase">{getTimeAgo(created_at)}</p>
       </div>
     </div>
   )
