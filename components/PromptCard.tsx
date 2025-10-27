@@ -46,12 +46,12 @@ export default function PromptCard({
   }
 
   return (
-    <div className="bg-white rounded-2xl shadow-lg overflow-hidden card-hover border border-gray-100">
+    <div className="bg-white rounded-3xl shadow-md overflow-hidden card-hover border border-gray-100">
       {/* Header - Instagram Style */}
-      <div className="p-4 flex items-center justify-between border-b border-gray-100">
+      <div className="p-4 flex items-center justify-between">
         <div className="flex items-center gap-3">
-          <div className="w-10 h-10 rounded-full instagram-gradient flex items-center justify-center">
-            <div className="w-9 h-9 rounded-full bg-white flex items-center justify-center">
+          <div className="w-10 h-10 rounded-full instagram-gradient p-0.5">
+            <div className="w-full h-full rounded-full bg-white flex items-center justify-center">
               <span className="text-sm font-bold instagram-gradient-text">
                 {creator_username?.charAt(1).toUpperCase() || 'A'}
               </span>
@@ -77,12 +77,12 @@ export default function PromptCard({
 
       {/* Image */}
       <Link href={`/prompts/${id}`}>
-        <div className="relative aspect-square overflow-hidden bg-gradient-to-br from-purple-100 to-pink-100">
+        <div className="relative aspect-square overflow-hidden bg-gradient-to-br from-purple-50 to-pink-50">
           <Image
             src={image_url || '/placeholder.jpg'}
             alt={title}
             fill
-            className="object-cover hover:scale-105 transition-transform duration-500"
+            className="object-cover hover:scale-105 transition-transform duration-700"
           />
         </div>
       </Link>
@@ -134,12 +134,4 @@ export default function PromptCard({
 
         {/* Copy Prompt Button */}
         <div className="pt-2">
-          <CopyButton text={prompt_text} label="Copy Prompt" />
-        </div>
-
-        {/* Time */}
-        <p className="text-xs text-gray-400 uppercase">{getTimeAgo(created_at)}</p>
-      </div>
-    </div>
-  )
-}
+          <CopyButton text={prompt_text}
