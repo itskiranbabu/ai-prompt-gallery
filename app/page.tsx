@@ -89,7 +89,10 @@ export default function HomePage() {
               <h1 className="text-2xl font-bold text-gray-900">AI Prompt Gallery</h1>
             </div>
             <div className="flex items-center space-x-4">
-              <button className="bg-primary-600 text-white px-4 py-2 rounded-lg hover:bg-primary-700 flex items-center transition-colors">
+              <button 
+  onClick={() => window.open('https://forms.gle/YOUR_FORM_ID', '_blank')}
+  className="instagram-gradient text-white px-6 py-2.5 rounded-full font-semibold hover:shadow-lg transition-all duration-300 hover:scale-105 flex items-center"
+>
                 <Plus className="w-4 h-4 mr-2" />
                 Submit Prompt
               </button>
