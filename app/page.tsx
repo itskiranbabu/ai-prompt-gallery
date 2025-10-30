@@ -75,7 +75,6 @@ export default function HomePage() {
 
   return (
     <div className="min-h-screen bg-gray-50">
-      {/* Header */}
       <header className="bg-white border-b border-gray-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-20">
@@ -85,7 +84,4 @@ export default function HomePage() {
               </div>
               <div>
                 <h1 className="text-xl font-bold text-gray-900">AI Prompt Gallery</h1>
-                <p className="text-xs text-gray-500">Community prompt studio</p>
-              </div>
-            </div>
-            <button className="bg-gray-900 text-white px-6 py-2.5 
+                <p className="
