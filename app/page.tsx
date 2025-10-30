@@ -88,40 +88,4 @@ export default function HomePage() {
                 <p className="text-xs text-gray-500">Community prompt studio</p>
               </div>
             </div>
-            <button className="bg-gray-900 text-white px-6 py-2.5 rounded-lg hover:bg-gray-800 transition-colors font-medium">
-              Submit Prompt
-            </button>
-          </div>
-        </div>
-      </header>
-
-      {/* Hero Section */}
-      <div className="bg-gradient-to-b from-gray-50 to-white border-b border-gray-200">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16 text-center">
-          <p className="text-sm font-semibold text-gray-600 uppercase tracking-wide mb-4">
-            Community prompt studio & gallery
-          </p>
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6 leading-tight">
-            Share the prompts behind the art.
-          </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-            Discover trending AI images and videos that inspire your next creation. Browse stunning artwork, copy the exact prompts, and learn from the community.
-          </p>
-        </div>
-      </div>
-
-      {/* Stats Section */}
-      <StatsSection 
-        promptsThisWeek={stats.promptsThisWeek}
-        totalCreators={stats.totalCreators}
-        totalLikes={stats.totalLikes}
-      />
-
-      {/* Main Content */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className="text-center mb-12">
-          <h2 className="text-3xl font-bold text-gray-900 mb-4">
-            See what the community is creating and loving right now.
-          </h2>
-          <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-            Every image and video comes with the exact prompt that created it. Skip the guesswork and learn directly from pieces that caught
+            <button className="bg-gray-900 text-white px-6 py-2.5 
