@@ -4,12 +4,12 @@ import { Inter } from 'next/font/google'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata = {
-  title: 'AI Prompt Gallery - Discover & Share Amazing AI Prompts',
-  description: 'Browse thousands of AI-generated images with their exact prompts. Learn from the community, copy prompts, and create stunning AI art with Midjourney, DALL-E, Stable Diffusion.',
-  keywords: 'AI prompts, Midjourney prompts, DALL-E prompts, AI art, prompt gallery, AI images, stable diffusion prompts',
+  title: 'AI Prompt Gallery - Community Prompt Studio',
+  description: 'Discover and share AI-generated images with the prompts that power them. Browse cinematic AI videos, explore stunning artwork, and learn from the community.',
+  keywords: 'AI prompts, Midjourney prompts, DALL-E prompts, AI art, prompt gallery, AI images, stable diffusion prompts, AI video prompts',
   openGraph: {
-    title: 'AI Prompt Gallery - Creative Hub',
-    description: 'Discover trending AI images and the prompts behind them',
+    title: 'AI Prompt Gallery - Community Prompt Studio',
+    description: 'Share the prompts behind the art. Discover trending AI images and videos.',
     url: 'https://ai-prompt-gallery-eight.vercel.app',
     siteName: 'AI Prompt Gallery',
     images: [
@@ -24,8 +24,8 @@ export const metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'AI Prompt Gallery',
-    description: 'Discover trending AI images and prompts',
+    title: 'AI Prompt Gallery - Community Prompt Studio',
+    description: 'Share the prompts behind the art',
     images: ['https://ai-prompt-gallery-eight.vercel.app/og-image.jpg'],
   },
 }
