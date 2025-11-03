@@ -3,27 +3,12 @@
 @tailwind utilities;
 
 @layer base {
-  :root {
-    --gradient-instagram: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
-  }
-  
   body {
     @apply bg-gray-50 text-gray-900 antialiased;
   }
 }
 
 @layer components {
-  .instagram-gradient {
-    background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
-  }
-  
-  .instagram-gradient-text {
-    background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-  }
-  
   .card-hover {
     @apply transition-all duration-300 hover:shadow-2xl hover:-translate-y-1;
   }
@@ -31,10 +16,6 @@
   .glass-effect {
     @apply bg-white/90 backdrop-blur-xl border border-white/20 shadow-xl;
   }
-  
-  .btn-primary {
-    @apply instagram-gradient text-white px-6 py-3 rounded-full font-semibold hover:shadow-lg transition-all duration-300 hover:scale-105;
-  }
 }
 
-/* Force rebuild */
+/* BananaPrompts Style - v2.0 */
