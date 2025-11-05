@@ -37,6 +37,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
+      <head>
+        <meta name="version" content="bananaprompts-v3" />
+      </head>
       <body className={inter.className}>{children}</body>
     </html>
   )
